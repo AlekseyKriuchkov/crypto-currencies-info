@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import {SomeComponent} from "@/app/some-component";
 
-export default function Home() {
+export default function App () {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
+        <SomeComponent />
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>app/page.tsx</code>
