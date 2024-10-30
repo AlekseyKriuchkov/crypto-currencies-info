@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const SomeComponent = () => {
+export default function Converter () {
     return (
         <div>
-            bla bla
+            Converter
         </div>
     );
 };
