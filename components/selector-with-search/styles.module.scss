@@ -1,0 +1,52 @@
+.wrapper {
+  position: absolute;
+  top: 65px;
+  left: 20px;
+  width: 500px;
+  height: 500px;
+  background-color: darkgray;
+  border-radius: 13px;
+  padding: 10px 20px;
+  overflow: auto;
+}
+
+.inputBlockWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  color: black;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  list-style-type: none;
+  color: black;
+  cursor: pointer;
+
+  &.isActive {
+    color: purple;
+  }
+}
+
+.list:hover {
+  color: purple;
+  border: 1px solid purple;
+  border-radius: 5px;
+}
+
+
+
+.coin {
+  color: #000;
+}
