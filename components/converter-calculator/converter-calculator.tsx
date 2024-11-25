@@ -30,12 +30,12 @@ export const ConverterCalculator: FC<Props> = ({coinsMap}) => {
     const exchangePrice = (fromCoin.price / toCoin.price)
     const reversedExchangePrice = (toCoin.price / fromCoin.price).toFixed(10)
 
-    const  options =Object.values(coinsMap).map(coin =>
+    const  options = Object.values(coinsMap).map(coin =>
             ({
                 text: <div className={styles.options}>
-                    <div>{coin.name} {coin.symbol}</div>
-                    <div>{coin.price}</div>
-                </div>,
+                        <div>{coin.name} {coin.symbol}</div>
+                        <div>{coin.price}</div>
+                    </div>,
                 searchValue: `${coin.slug} ${coin.symbol}`,
                 value: coin.slug
             }))

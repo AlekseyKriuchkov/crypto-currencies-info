@@ -1,4 +1,4 @@
-export type CoinType = {
+export type Coin = {
     id: number,
     rank: number,
     slug: string,
@@ -27,8 +27,8 @@ export type CoinType = {
     lastUpdated: string,
 }
 
-export type GetCoinsResponse = {
-    data: CoinType [],
+export type CoinsResponse = {
+    data: Coin [],
     meta: {
         count: number
     },

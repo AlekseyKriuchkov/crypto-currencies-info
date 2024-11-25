@@ -1,0 +1,16 @@
+
+.button {
+  margin-right: 5px;
+  min-width: 20px;
+  min-height: 20px;
+  border-color: transparent;
+  background-color: transparent;
+
+  &.isActive {
+    border-color: purple;
+  }
+}
+
+.button:hover {
+  border-color: purple;
+}

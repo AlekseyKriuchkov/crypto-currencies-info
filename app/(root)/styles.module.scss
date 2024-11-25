@@ -1,0 +1,34 @@
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.table {
+  width: 90%;
+  border-spacing: 0;
+}
+
+.tableRow > td {
+  height: 30px;
+  border-bottom: 1px solid white;
+}
+
+.image {
+  fill: white;
+
+  &.isActive {
+    fill: purple;
+  }
+}
+
+.image:hover {
+  stroke: goldenrod;
+}

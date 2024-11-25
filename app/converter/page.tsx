@@ -1,12 +1,12 @@
-import {getCoinsData} from "@/utils/get-coins-data/get-coins-data";
-import {GetCoinsResponse} from "@/types/types";
-import {getPriceChange} from "@/utils/get-price-change/get-price-change";
+import {getCoins} from "@/utils/get-coins";
+import {CoinsResponse} from "@/types/types";
+import {getPriceChange} from "@/utils/get-price-change";
 import {ConverterCalculator} from "@/components/converter-calculator/converter-calculator";
 import styles from "@/app/converter/styles.module.scss"
 import Head from "next/head";
 
 export default async function Converter() {
-    const coinsData: GetCoinsResponse = await getCoinsData()
+    const coinsData: CoinsResponse = await getCoins()
     const changedPrice = getPriceChange(coinsData.data[1].values.USD.price, coinsData.data[1].values.USD.percentChange3m)
     const coinsMap = coinsData.data.reduce((acc, {slug,values,symbol,name}) => {
         return {

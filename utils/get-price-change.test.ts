@@ -1,4 +1,4 @@
-import {getPriceChange} from "@/utils/get-price-change/get-price-change";
+import {getPriceChange} from "@/utils/get-price-change";
 import {expect, test} from "@jest/globals";
 
 test("Validate value", () => {

@@ -1,14 +1,12 @@
-import Head from "next/head";
+import {CoinsResponse} from "@/types/types";
+import {Watchlist} from "@/components/watchlist/watchlist";
+import {baseFetcher} from "@/app/api/baseFetcher";
 
+export const fetchCache = 'force-no-store';
 
-export default function Home () {
-    return (
-        <div>
-            <Head>
-                <title>Converter</title>
-                <meta name='description' content='Коля хуй'/>
-            </Head>
-            coinsData
-        </div>
-    );
+export default async function Home () {
+
+    const coinsData: CoinsResponse = await baseFetcher("GET","currencies/", {limit: 10})
+
+    return <Watchlist coinsData={coinsData} />;
 };
