@@ -2,10 +2,11 @@
 import {FC} from "react";
 import styles from "@/components/pagination/styles.module.scss"
 import cn from 'classnames'
+import {getPages} from "@/utils/get-pages";
 
 type Props = {
     currentPage: number
-    handleChangePage: (offset: number) => void
+    handleChangePage: (page: number) => void
     paginationLimit: number
     totalCount: number
 }
@@ -13,25 +14,23 @@ type Props = {
 export const Pagination: FC<Props> = ({currentPage, handleChangePage, paginationLimit, totalCount}) => {
 
     const pageCount = Math.ceil(totalCount/paginationLimit)
-    const pages = currentPage === 1 ?
-        Array.from({ length: pageCount }, (_, i) => i + 1).slice(currentPage - 1, currentPage + 4)
-        :
-        currentPage >= pageCount -3 ?
-            Array.from({ length: pageCount }, (_, i) => i + 1).slice(pageCount - 5, pageCount)
-            :
-            Array.from({ length: pageCount }, (_, i) => i + 1).slice(currentPage - 2, currentPage + 3)
+
+    const pages = getPages(currentPage, pageCount)
+
+    const showEllipsisBefore = currentPage > 2;
+    const showEllipsisAfter = currentPage < pageCount - 2;
 
     return (
         <div>
-            {currentPage > 2 && <button className={cn(styles.button, {[styles.isActive]: currentPage === 1})} onClick={() => handleChangePage(1)}>{1}</button>}
-            {currentPage > 2 && <span>... </span>}
+            <button className={cn(styles.button, {[styles.isActive]: currentPage === 1})} onClick={() => handleChangePage(1)}>{1}</button>
+            {showEllipsisBefore && <span>... </span>}
             {
-                pages.map((option) => (
-                    <button className={cn(styles.button, {[styles.isActive]: currentPage === option})} onClick={() => handleChangePage(option)} key={option}>{option}</button>
+                pages.map((page) => (
+                    <button className={cn(styles.button, {[styles.isActive]: currentPage === page})} onClick={() => handleChangePage(page)} key={page}>{page}</button>
                 ))
             }
-            {currentPage !== pageCount && <span>... </span>}
-            {currentPage !== pageCount && <button className={styles.button} onClick={() => handleChangePage(pageCount)}>{pageCount}</button>}
+            {showEllipsisAfter && <span>... </span>}
+            <button className={cn(styles.button, {[styles.isActive]: currentPage === pageCount})} onClick={() => handleChangePage(pageCount)}>{pageCount}</button>
         </div>
     );
 };
